@@ -1,0 +1,8 @@
+//枚举类型
+//对枚举变量进行赋值时
+enum CLR{
+  BLK=0,
+  WHI=1
+};
+enum CLR color = 1;//语法不严格，c中可能不会报错，cpp会报错
+//int和enum CLR是两种类型
