@@ -1,0 +1,39 @@
+	//The trap about pointer
+	int iV = 1;
+	char cV = 'a';
+	int iA[5] = { 1,2,3,4,5 };
+	
+	//Pointer And Array
+	int* piA[5] = {NULL};//Array:Pointer1,Pointer2...
+
+	int* (*pA)[5] = &piA;//Pointer->array(TYPE:int*[5])
+	int(*pA_1)[5] = &iA;//Pointer->array(TYPE:int[5])
+
+	//Pointer And Function
+	//Func
+	void FUN1();
+	int FUN2();
+	int FUN3(int,int);
+	int* FUN4(int);
+	//Pointer
+	void (*pF)() = FUN1;//TYPE void (*) ()
+	void (*pF_1)() = &FUN1;
+	void (*pF_2)() = pF;
+	void (*pF_3)() = pF_2;
+	void (*pF_4)() = FUN1;
+	int (*pF2)() = FUN2;
+	int (*pF3)(int, int) = FUN3;
+	int* (*pF4)(int) = FUN4;
+
+	//Array -> FUNC
+	void (*funptrArray[5])() = {NULL};
+	funptrArray[0] = pF;
+	funptrArray[1] = pF_1;
+
+	//FUNC returning Array :NOT ALLOWED
+	//void (*func()[5])();
+
+	//FUNC returning Pointer pointing to func
+	void (*fun1())();
+	int (*fun2())(int, int);
+	int (*fun3(int))(int);
