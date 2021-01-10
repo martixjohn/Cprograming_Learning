@@ -1,0 +1,36 @@
+//当进行指针偏移时
+//不妨假设下列情景，目的是进行字符串连接
+int my_strcat(char* dst,const char* src) {
+	if (!dst || !src) return FAIL;
+ 	while (*dst++);//WARNING
+	while (*dst++=*src++);
+	return SUCCESS;
+}
+//调用:
+char p1[20]="THIS IS";
+char p2[]="THAT IS";
+my_strcat(p1,p2);
+
+/*
+看似没有问题
+我们不妨看下过程
+p1： T H I S   I S \0 \0
+     0 1 2 3 4 5 6 7  8
+执行  while (*dst++);//WARNING
+dst -> T 0
+...
+dst -> S 6
+BOOL为TRUE
+dst++;
+dst -> \0 7
+
+最后一次判断
+执行
+  *dst = \0 7 BOOL为FALSE
+ !!dst++
+  dst-> \0 8
+  
+弄巧成拙了哈哈
+*/
+//为了解决这个问题
+//while (*dst!='\0') dst++;
