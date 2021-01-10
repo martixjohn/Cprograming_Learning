@@ -1,0 +1,1 @@
+###THE TRAP ABOUT POINTER###
