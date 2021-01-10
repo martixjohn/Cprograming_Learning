@@ -1,0 +1,15 @@
+//结构体中使用本类型的成员变量
+
+//以下为错误写法
+struct NAME{
+  int n;
+  struct NAME p;//SIZE未知
+};
+
+//这样导致sizeof(struct NAME)是未知的
+
+//以下是正确的
+struct NAME{
+  int n;
+  struct NAME* p;//SIZE in 32bit :4;  64bit:8;
+};
